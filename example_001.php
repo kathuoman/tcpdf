@@ -81,27 +81,6 @@ if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
 // // Print text using writeHTMLCell()
 // $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
 
-// // Set position to (100, 100)
-// $pdf->SetXY(100, 120);
-
-
-// // Write some more text at the new position
-// $pdf->Cell(0, 0, 'ทดสอบระบบ');
-
-// // ---------------------------------------------------------
-
-// // Close and output PDF document
-// // This method has several options, check the source code documentation for more information.
-// // Save the modified PDF to the server
-// $outputFilePath = 'document/modified.pdf';
-// //read
-// $pdf->Output('example_001.pdf', 'I');
-// // save to server
-// $pdf->Output(__DIR__ . '/document/modified.pdf', 'F');
-
-//============================================================+
-// END OF FILE
-//============================================================+
 
 // // set header
 $pdf->setPrintHeader(false);
@@ -120,7 +99,13 @@ $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 $pdf->AddPage();
 
 // Image example with resizing
-$pdf->Image('image/traqut.jpg', 30, 15, 0, 15, 'JPG', '', '', true, 150, '', false, false, 0, false, false, false);
+//$pdf->Image('image/1800400340853.jpg', 30, 15, 0, 15, 'JPG', '', '', true, 150, '', false, false, 0, false, false, false);
+//$img = file_get_contents('https://reg.rmutsv.ac.th/regis2file/thungyai/stdImage/1800400340853.jpg');
+$img = 'https://reg.rmutsv.ac.th/regis2file/thungyai/stdImage/1800400340853.jpg';
+
+$pdf->Image($img, 30, 15, 0, 15, 'JPG', '', '', true, 150, '', false, false, 0, false, false, false);
+
+//$pdf->Image('@' . $img);
 
 
 $pdf->SetY(20);
@@ -160,7 +145,41 @@ $pdf->Cell(15, 0, 'เรื่อง', 0, 0, 'L', 0, '', 0);
 
 $pdf->SetFont(THSARABUN_REGULAR, '', 16);
 $pdf->SetXY(45,58);
-$pdf->MultiCell(0, 0, 'แจ้งมติที่ประชุมคณะกรรมการตรวจรับพัสดุ รายการอุปกรณ์เครือข่ายไร้สาย สำหรับการเรียนการสอนออนไลน์ จำนวน ๑ ระบบ', 0, 'L',  1, 0, '', '', true);
+$pdf->MultiCell(0, 0, 'แจ้งมติที่ประชุมคณะกรรมการตรวจรับพัสดุ รายการอุปกรณ์เครือข่ายไร้สาย สำหรับการเรียนการสอนออนไลน์ จำนวน ๑ ระบบ', 0, 'L',  1, 1, '', '', true);
+
+$pdf->SetFont(THSARABUN_REGULAR, '', 16);
+// $pdf->SetX(55);
+// $pdf->MultiCell(0, 0, 'แจ้งมติที่ประชุมคณะกรรมการตรวจรับพัสดุ รายการอุปกรณ์เครือข่ายไร้สาย สำหรับการเรียนการสอนออนไลน์ จำนวน ๑ ระบบ', 0, 'L',  1, 1, '', '', true);
+
+// ภาคเหตุ
+$pdf->Ln(2.116);
+$pdf->MultiCell(0, 0, '                    ภาคเหตุ จากมติที่ประชุมคณะกรรมการตรวจรับพัสดุ รายการอุปกรณ์เครือข่ายไร้สาย สำหรับการเรียนการสอนออนไลน์ จำนวน ๑ ระบบ', 0, 'L',  1, 1, '', '', true);
+
+// ภาคความประสงค์
+$pdf->Ln(2.116);
+$pdf->MultiCell(0, 0, '                    ภาคความประสงค์ จากมติที่ประชุมคณะกรรมการตรวจรับพัสดุ รายการอุปกรณ์เครือข่ายไร้สาย สำหรับการเรียนการสอนออนไลน์ จำนวน ๑ ระบบ', 0, 'L',  1, 1, '', '', true);
+
+// ภาคสรุป
+$pdf->Ln(2.116);
+$pdf->MultiCell(0, 0, '                    ภาคสรุป จึงเรียนมาเพื่อโปรดพิจราณา', 0, 'L',  1, 1, '', '', true);
+
+// ตำแหน่ง
+$pdf->Ln();
+$pdf->Ln();
+$pdf->Ln();
+$pdf->Ln();
+$pdf->Ln(2.116);
+$pdf->SetX(105);
+//$pdf->MultiCell(0, 0, '(ชื่อผู้ลงนาม........................)', 0, 'L',  1, 1, '', '', true);
+
+$pdf->Cell(0, 0, '(ชื่อผู้ลงนาม........................)', 0, 1, 'L', 0, '', 0);
+$pdf->SetX(60);
+$pdf->Cell(0, 0, 'ผู้อำนวยการสำนักวิทยบริการและเทคโนโลยีสารสนเทศ', 0, 1, 'C', 0, '', 0);
+
+
+//$date_timestamp = date('m/d/Y H:i:s', 1687026425);
+//$pdf->Cell(0, 0, $date_timestamp , 0, 1, 'C', 0, '', 0);
+
 // test Cell stretching
 // $pdf->Cell(0, 0, 'TEST CELL STRETCH: no stretch', 1, 1, 'C', 0, '', 0);
 // $pdf->Cell(0, 0, 'TEST CELL STRETCH: scaling', 1, 1, 'C', 0, '', 1);
